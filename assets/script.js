@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
 	const caroussel = document.querySelector(".caroussel");
-	const images = caroussel.querySelectorAll("img");
-	const bulletPoints = document.querySelectorAll(".dot")
+	const image = caroussel.querySelector("img");	
 	let currentImageIndex = 0;
 	const nextButton = document.getElementById("nextBtn");
 	const prevButton = document.getElementById("prevBtn");
@@ -24,33 +23,44 @@ document.addEventListener("DOMContentLoaded", function() {
 		}
 	]	
 	
+	function createBulletPoints() {
+        const dots = document.querySelector(".dots");
+        for (let i = 0; i < slides.length; i++) {
+            if (i === 0) {
+                dots.innerHTML += `<div class="dot dot_selected"></div>`;
+            } else {
+                dots.innerHTML += `<div class="dot"></div>`
+            }
+        }
+    }
+
+    createBulletPoints();
+
 	function showImg(index) {
-		images.forEach(function(image){
-			image.classList.remove("active")
-		});
-		images[index].classList.add("active");
+		image.src = `./assets/images/slideshow/` + slides[index].image;
 
 		const tagLine = document.querySelector(".tagLine")
 		tagLine.innerHTML = slides[index].tagLine;
 
-		bulletPoints.forEach(function(bulletPoint, bulletIndex) {
-			if (bulletIndex === index) {
-			  bulletPoint.classList.add("dot_selected");
-			} else {
-			  bulletPoint.classList.remove("dot_selected");
-			}
-		});
+		const bulletPoints = document.querySelectorAll(".dot");
+        bulletPoints.forEach(function(bulletPoint, bulletIndex) {
+            if (bulletIndex === index) {
+              bulletPoint.classList.add("dot_selected");
+            } else {
+              bulletPoint.classList.remove("dot_selected");
+            }
+        });
 	}
 
 
 	
 	prevButton.addEventListener("click", function() {
-		currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+		currentImageIndex = (currentImageIndex - 1 + slides.length) % slides.length;
 		showImg(currentImageIndex);
 	})
 
 	nextButton.addEventListener("click", function() {
-		currentImageIndex = (currentImageIndex + 1 + images.length) % images.length;
+		currentImageIndex = (currentImageIndex + 1 + slides.length) % slides.length;
 		showImg(currentImageIndex);
 	})
 });

@@ -54,7 +54,6 @@ table {
 	border-spacing: 0;
 }
 body {
-
 }
 section {
 	margin-block: 6em;
@@ -110,7 +109,6 @@ header {
 	align-items: center;
 	justify-content: center;
 	width: 100%;
-	min-height: 470px;
 	position: relative;
 }
 .banner-img {
@@ -122,15 +120,16 @@ header {
 	object-position: center;
 }
 
-.caroussel img {
-	display: none;
-}
- 
-.caroussel img.active {
-	display: block;
-  } 
 /* Code CSS en prévision de l'ajout d'un carousel pour la bannière */
 /* Gestion des fleches du carrousel */
+.caroussel {
+	width: 100%;
+}
+
+.caroussel img {
+	width: 100%;
+}
+
 #banner .arrow {
 	position: absolute;	
     width: 100%;
