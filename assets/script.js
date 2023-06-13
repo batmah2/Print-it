@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (i === 0) {
                 dots.innerHTML += `<div class="dot dot_selected"></div>`;
             } else {
-                dots.innerHTML += `<div class="dot"></div>`
+                dots.innerHTML += `<div class="dot"></div>`;
             }
         }
     }
